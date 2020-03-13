@@ -49,9 +49,9 @@ function ParentFinder(tree, n1, n2) {
     //First I want to find the nearest nodes for each leaf provided, then find middle node
     var n1Node = NearestNode(tree, n1);
     var n2Node = NearestNode(tree, n2);
-    console.log("nodes" + n1Node + " " + n2Node);
+    //console.log("nodes" + n1Node + " " + n2Node);
     var node = Math.floor((n1Node + n2Node)/2);
-    console.log("Node: " + node);
+    //console.log("Node: " + node);
 
     DrawMe(tree, n1, n2, node);
     //console.log("Magic!" + tree);
@@ -61,28 +61,29 @@ ParentFinder("B", 3, 1);
 
 function DrawMe(tree, n1, n2, node) {
     var lines = "------";
-    var line = "     ";
+    var line = "      ";
     var spaces = "          ";
     
     //First a for loop to show nodes and leaf1
-    var Nodes = "Head" + lines;
+    var Nodes = "     Head " + lines;
     for (var i = 1; i <= tree; i++) {
         Nodes = Nodes.concat("Node" + i + lines);
     }
-    // if (n1 || n2 === 1) {
-    //     console.log(Nodes, green, "Leaf1", white);
-    // } else {
-    //     console.log(Nodes + "Leaf1");
-    // }
-    // console.log(Nodes + "Leaf1");
-    // //console.log("Head" + lines + tree + lines);
+    console.log(Nodes + "Leaf1");
+    //console.log("Head" + lines + tree + lines);
 
-    for (var i = 0; i < 5; i++) {
-        console.log("|" + spaces + "|" + spaces + "|" + spaces);
+    var dashes ="      |" + spaces;
+    for (var i = 0; i < tree; i++) {
+        dashes = dashes.concat("|" + spaces);
+        //console.log("|" + spaces + "|" + spaces + "|" + spaces);
+    }
+
+    for (var i = 0; i <= 5; i++) {
+        console.log(dashes);
     }
     
-    var Leafs = "";
-    for (var i = tree+2; i > 1; i--) {
+    var Leafs = "     ";
+    for (var i = tree + 2; i > 1; i--) {
         if (i != 2) {
             Leafs = Leafs.concat("Leaf" + i + line);
         }
@@ -92,13 +93,6 @@ function DrawMe(tree, n1, n2, node) {
     }
     console.log(Leafs);
     //console.log("Leaf" + n1 + line + "Leaf" + n2);
-
-var green = "\x1b[32m";
-var yellow = "\x1b[33m";
-var red = "\x1b[31m";
-var white = "\x1b[37m";
-//console.log(cyan, "\n\nWelcome to Constructor Word Guess!", white);
-//console.log("\x1b[32m", "?", "\x1b[37m", "Guess a letter!");
 }
 
 function NearestNode(tree, leaf) {
