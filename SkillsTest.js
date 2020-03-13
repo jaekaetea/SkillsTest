@@ -57,7 +57,7 @@ function ParentFinder(tree, n1, n2) {
     //console.log("Magic!" + tree);
 };
 
-ParentFinder("B", 3, 1);
+ParentFinder("H", 3, 1);
 
 function DrawMe(tree, n1, n2, node) {
     var lines = "------";
@@ -78,11 +78,13 @@ function DrawMe(tree, n1, n2, node) {
         //console.log("|" + spaces + "|" + spaces + "|" + spaces);
     }
 
+    var tSpace = "";
     for (var i = 0; i <= 5; i++) {
-        console.log(dashes);
+        tSpace = tSpace.concat(" ");
+        console.log(tSpace + dashes);
     }
     
-    var Leafs = "     ";
+    var Leafs = "     " + tSpace;
     for (var i = tree + 2; i > 1; i--) {
         if (i != 2) {
             Leafs = Leafs.concat("Leaf" + i + line);
