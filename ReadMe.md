@@ -1,4 +1,4 @@
 Skills Test
 
 
-[Picture](Picture.png)
+![Picture](Picture.png)
