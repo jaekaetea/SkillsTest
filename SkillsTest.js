@@ -41,7 +41,20 @@ There are node+2 leaf(s)
 */
 
 // Takes capital letter and 2 numbers
+
+//Edit to change Nodes/ Leaf(s)
+ParentFinder("B", 1, 3);
+
+var a = process.argv[2];
+var b = process.argv[3];
+var c = process.argv[4];
+
+ParentFinder(a, parseInt(b), parseInt(c));
+
+
 function ParentFinder(tree, n1, n2) {
+    console.log("---------------------------------------------------------------");
+    console.log("\n\n" + "Tree: " + tree + " | Leaf1: " + n1 + " | Leaf2: " + n2);
     var tree = treeNumber(tree);
     var n1 = n1;
     var n2 = n2;
@@ -51,13 +64,13 @@ function ParentFinder(tree, n1, n2) {
     var n2Node = NearestNode(tree, n2);
     //console.log("nodes" + n1Node + " " + n2Node);
     var node = Math.floor((n1Node + n2Node)/2);
-    //console.log("Node: " + node);
+    console.log("Node: " + node + "\n\n");
 
     DrawMe(tree, n1, n2, node);
-    //console.log("Magic!" + tree);
+    
+    console.log("\n\nFigure " + tree);
+    console.log("\n---------------------------------------------------------------");
 };
-
-ParentFinder("H", 3, 1);
 
 function DrawMe(tree, n1, n2, node) {
     var lines = "------";
@@ -65,11 +78,24 @@ function DrawMe(tree, n1, n2, node) {
     var spaces = "          ";
     
     //First a for loop to show nodes and leaf1
-    var Nodes = "     Head " + lines;
-    for (var i = 1; i <= tree; i++) {
-        Nodes = Nodes.concat("Node" + i + lines);
+    if (node == 0) {
+        var Nodes = "     HEAD " + lines;
+    } else {
+        var Nodes = "     Head " + lines;
     }
-    console.log(Nodes + "Leaf1");
+    for (var i = 1; i <= tree; i++) {
+        if (node == i) {
+            Nodes = Nodes.concat("NODE" + i + lines);
+        } else {
+            Nodes = Nodes.concat("Node" + i + lines);
+        }
+    }
+    
+    if (n1 == 1 || n2 == 1) {
+        console.log(Nodes + "LEAF1");
+    } else {
+        console.log(Nodes + "Leaf1");
+    }
     //console.log("Head" + lines + tree + lines);
 
     var dashes ="      |" + spaces;
@@ -86,11 +112,10 @@ function DrawMe(tree, n1, n2, node) {
     
     var Leafs = "     " + tSpace;
     for (var i = tree + 2; i > 1; i--) {
-        if (i != 2) {
+        if (n1 == i || n2 == i) {
+            Leafs = Leafs.concat("LEAF" + i + line);
+        } else {
             Leafs = Leafs.concat("Leaf" + i + line);
-        }
-        else {
-            Leafs = Leafs.concat("Leaf" + i);
         }
     }
     console.log(Leafs);
